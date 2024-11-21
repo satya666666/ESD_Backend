@@ -22,13 +22,5 @@ public class CustomerService {
         return "Created";
     }
 
-    public String login(@Valid LoginRequest request) {
-        Customer customer = getCustomer(request.email());
-        if(!encryptionService.validates(request.password(), customer.getPassword())) {
-            return "Wrong Password or Email";
-        }
-
-        return jwtHelper.generateToken(request.email());
-    }
 
 }
